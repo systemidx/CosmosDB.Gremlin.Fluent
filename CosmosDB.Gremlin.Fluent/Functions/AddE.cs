@@ -1,8 +1,8 @@
 ﻿namespace CosmosDB.Gremlin.Fluent.Functions
 {
-    public static class AddEdgeFunction
+    public static class AddEFunction
     {
-        public static GremlinQueryBuilder AddEdge(this GremlinQueryBuilder builder, GremlinParameter parameter)
+        public static GremlinQueryBuilder AddE(this GremlinQueryBuilder builder, GremlinParameter parameter)
         {
             if (parameter == null)
                 throw new GremlinParameterException();

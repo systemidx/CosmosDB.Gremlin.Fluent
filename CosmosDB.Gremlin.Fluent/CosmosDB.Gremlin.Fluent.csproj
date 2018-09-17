@@ -3,15 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.0.0</Version>
-    <AssemblyVersion>0.0.1.0</AssemblyVersion>
-    <FileVersion>0.0.1.0</FileVersion>
+    <Version>0.2.0.0</Version>
+    <AssemblyVersion>0.2.0.0</AssemblyVersion>
+    <FileVersion>0.2.0.0</FileVersion>
     <Authors>systemidx</Authors>
     <Company />
     <PackageTags>gremlin, cosmosdb, tinkerpop</PackageTags>
     <PackageProjectUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides a fluent LINQ type query builder for building Gremlin queries.</Description>
+    <RepositoryUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</RepositoryUrl>
+    <PackageReleaseNotes>- Fixes addE() and addV() C# members ("AddEdge()" becomes "AddE()")
+- Added function: To()</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>

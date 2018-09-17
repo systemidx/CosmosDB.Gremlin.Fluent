@@ -18,7 +18,7 @@ namespace CosmosDB.Gremlin.Fluent.Tests.Functions
         public void GeneratesCorrectSyntaxWithFunction()
         {
             GremlinQueryBuilder builder = new GremlinQueryBuilder();
-            builder.By(new GremlinQueryBuilder().AddEdge(new GremlinParameter("myparam")));
+            builder.By(new GremlinQueryBuilder().AddE(new GremlinParameter("myparam")));
 
             Assert.Equal("by(addE('myparam'))", builder.Query);
         }

@@ -1,8 +1,8 @@
 ﻿namespace CosmosDB.Gremlin.Fluent.Functions
 {
-    public static class AddVertexFunction
+    public static class AddVFunction
     {
-        public static GremlinQueryBuilder AddVertex(this GremlinQueryBuilder builder, GremlinParameter parameter)
+        public static GremlinQueryBuilder AddV(this GremlinQueryBuilder builder, GremlinParameter parameter)
         {
             if (parameter == null)
                 throw new GremlinParameterException();
