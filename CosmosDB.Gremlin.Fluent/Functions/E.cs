@@ -4,7 +4,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class EFunction
     { 
-        public static GremlinQueryBuilder V(this GremlinQueryBuilder builder, GremlinParameter value = null)
+        public static GremlinQueryBuilder E(this GremlinQueryBuilder builder, GremlinParameter value = null)
         {
             if (value == null)
                 return builder.Add($"E()");
