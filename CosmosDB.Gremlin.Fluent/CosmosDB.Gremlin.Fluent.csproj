@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.2.6</Version>
-    <AssemblyVersion>0.2.6.0</AssemblyVersion>
-    <FileVersion>0.2.6.0</FileVersion>
+    <Version>0.2.7</Version>
+    <AssemblyVersion>0.2.7.0</AssemblyVersion>
+    <FileVersion>0.2.7.0</FileVersion>
     <Authors>systemidx</Authors>
     <Company />
     <PackageTags>gremlin, cosmosdb, tinkerpop</PackageTags>
@@ -13,7 +13,7 @@
     <PackageLicenseUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides a fluent LINQ type query builder for building Gremlin queries.</Description>
     <RepositoryUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</RepositoryUrl>
-    <PackageReleaseNotes>v0.2.5: Adds support for neq()</PackageReleaseNotes>
+    <PackageReleaseNotes>v0.2.7: Adds support for neq() with parameters</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
