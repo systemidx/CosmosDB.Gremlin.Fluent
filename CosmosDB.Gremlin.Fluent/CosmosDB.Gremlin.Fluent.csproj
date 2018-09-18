@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.2.4</Version>
-    <AssemblyVersion>0.2.4.0</AssemblyVersion>
-    <FileVersion>0.2.4.0</FileVersion>
+    <Version>0.2.5</Version>
+    <AssemblyVersion>0.2.5.0</AssemblyVersion>
+    <FileVersion>0.2.5.0</FileVersion>
     <Authors>systemidx</Authors>
     <Company />
     <PackageTags>gremlin, cosmosdb, tinkerpop</PackageTags>
@@ -13,7 +13,7 @@
     <PackageLicenseUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides a fluent LINQ type query builder for building Gremlin queries.</Description>
     <RepositoryUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</RepositoryUrl>
-    <PackageReleaseNotes>v0.2.3: Fixes a bug where V() and E() were being referenced by the same named function.</PackageReleaseNotes>
+    <PackageReleaseNotes>v0.2.5: Adds support for select()</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
