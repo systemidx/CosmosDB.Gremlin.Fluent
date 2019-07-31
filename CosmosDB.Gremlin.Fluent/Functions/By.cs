@@ -13,6 +13,12 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             builder.AddArgument(parameter as GremlinArgument);
             return builder.Add($"by({parameter.Value})");
         }
+        
+        // for implicit conversion operators
+        public static GremlinQueryBuilder By(this GremlinQueryBuilder builder, GremlinParameter parameter)
+        {
+            return builder.By((IGremlinParameter)parameter);
+        }
 
         public static GremlinQueryBuilder By(this GremlinQueryBuilder builder, GremlinQueryBuilder func)
         {

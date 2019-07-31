@@ -12,5 +12,11 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             builder.AddArgument(parameter as GremlinArgument);
             return builder.Add($"aggregate({parameter.Value})");
         }
+        
+        // for implicit conversion operators
+        public static GremlinQueryBuilder Aggregate(this GremlinQueryBuilder builder, GremlinParameter parameter)
+        {
+            return builder.Aggregate((IGremlinParameter)parameter);
+        }
     }
 }

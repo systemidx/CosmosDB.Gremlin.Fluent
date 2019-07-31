@@ -20,5 +20,11 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             builder.AddArgument(parameter as GremlinArgument);
             return builder.Add($"neq({parameter.Value})");
         }
+        
+        // for implicit conversion operators
+        public static GremlinQueryBuilder Neq(this GremlinQueryBuilder builder, GremlinParameter parameter)
+        {
+            return builder.Neq((IGremlinParameter)parameter);
+        }
     }
 }
