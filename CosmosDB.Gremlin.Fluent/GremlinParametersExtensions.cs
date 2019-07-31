@@ -4,7 +4,7 @@ namespace CosmosDB.Gremlin.Fluent
 {
     public static class GremlinParametersExtensions
     {
-        public static string Expand(this GremlinParameter[] parameters)
+        public static string Expand(this IGremlinParameter[] parameters)
         {
             if (parameters == null)
                 return string.Empty;

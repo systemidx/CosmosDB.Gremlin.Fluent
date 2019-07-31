@@ -1,8 +1,8 @@
 ﻿namespace CosmosDB.Gremlin.Fluent
 {
-    public class GremlinParameter
+    public class GremlinParameter : IGremlinParameter
     {
-        public string Value { get; }
+        public virtual string Value { get; }
 
         public GremlinParameter(string parameter)
         {
@@ -19,10 +19,25 @@
             Value = $"{parameter}".ToLowerInvariant();
         }
 
-        private string Sanitize(string parameter)
+        public static implicit operator GremlinParameter(int parameter)
+        {
+            return new GremlinParameter(parameter);
+        }
+        
+        public static implicit operator GremlinParameter(string parameter)
+        {
+            return new GremlinParameter(parameter);
+        }
+        
+        public static implicit operator GremlinParameter(bool parameter)
+        {
+            return new GremlinParameter(parameter);
+        }
+        
+        protected virtual string Sanitize(string parameter)
         {
             if (string.IsNullOrEmpty(parameter))
-                throw new GremlinParameterException();
+                throw new GremlinParameterException($"{nameof(parameter)} cannot be null");
 
             return parameter.Replace("'", string.Empty);
         }

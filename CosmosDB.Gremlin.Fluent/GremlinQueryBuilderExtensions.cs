@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
 namespace CosmosDB.Gremlin.Fluent
 {
@@ -7,7 +8,7 @@ namespace CosmosDB.Gremlin.Fluent
         public static string Expand(this GremlinQueryBuilder[] innerBuilders)
         {
             if (innerBuilders == null)
-                throw new GremlinQueryBuilderException();
+                throw new GremlinQueryBuilderException($"{nameof(Expand)} requires {nameof(innerBuilders)}");
 
             if (innerBuilders.Length == 0)
                 return string.Empty;
@@ -22,5 +23,12 @@ namespace CosmosDB.Gremlin.Fluent
 
             return sb.ToString();
         }
+        
+        public static GremlinArgument ToGremlinArgument(this KeyValuePair<string, object> pair)
+        {
+            return new GremlinArgument(pair.Key, pair.Value);
+        }
+        
+        
     }
 }

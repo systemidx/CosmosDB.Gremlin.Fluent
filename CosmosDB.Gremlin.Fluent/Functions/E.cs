@@ -1,15 +1,17 @@
-﻿using CosmosDB.Gremlin.Fluent;
+﻿using System;
+using CosmosDB.Gremlin.Fluent;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class EFunction
     { 
-        public static GremlinQueryBuilder E(this GremlinQueryBuilder builder, GremlinParameter value = null)
+        public static GremlinQueryBuilder E(this GremlinQueryBuilder builder, IGremlinParameter parameter = null)
         {
-            if (value == null)
-                return builder.Add($"E()");
-
-            return builder.Add($"E({value.Value})");
+            if (parameter == null)
+                throw new ArgumentNullException(nameof(parameter));
+            
+            builder.AddArgument(parameter as GremlinArgument);
+            return builder.Add($"E({parameter.Value})");
         }
     }
 }

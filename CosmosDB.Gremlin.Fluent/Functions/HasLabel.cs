@@ -1,13 +1,16 @@
-﻿namespace CosmosDB.Gremlin.Fluent.Functions
+﻿using System;
+
+namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class HasLabelFunction
     {
-        public static GremlinQueryBuilder HasLabel(this GremlinQueryBuilder builder, GremlinParameter value)
+        public static GremlinQueryBuilder HasLabel(this GremlinQueryBuilder builder, IGremlinParameter parameter)
         {
-            if (value == null)
-                throw new GremlinQueryBuilderException();
-
-            return builder.Add($"hasLabel({value.Value})");
+            if (parameter == null)
+                throw new ArgumentNullException(nameof(parameter));
+            
+            builder.AddArgument(parameter as GremlinArgument);
+            return builder.Add($"hasLabel({parameter.Value})");
         }
     }
 }
