@@ -7,7 +7,7 @@ namespace CosmosDB.Gremlin.Fluent
     {
         public string Query { get; private set; } = "";
 
-        public IReadOnlyDictionary<string, object> Arguments
+        public Dictionary<string, object> Arguments
         {
             get { return GremlinArguments.ToDictionary(arg => arg.ArgumentName, arg => arg.ArgumentValue); }
         }
