@@ -13,7 +13,8 @@
     <PackageLicenseUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides a fluent LINQ type query builder for building Gremlin queries.</Description>
     <RepositoryUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</RepositoryUrl>
-    <PackageReleaseNotes>v0.3.5: Improved by to support ordering and sub-builders. Added project.
+    <PackageReleaseNotes>v0.3.6: Added tail, limit and union
+v0.3.5: Improved by to support ordering and sub-builders. Added project.
 v0.3.4: Added order, value, values, properties and support for comparators incr and decr
 v0.3.3: Added anonymous traversal ( __.in() etc )
 v0.3.2: Added not()
@@ -22,7 +23,7 @@ v0.3.0: Added support for arguments.
 Added from, hasId, hasNot, valueMap
 Added implicit parameter support to simplify syntax 
 </PackageReleaseNotes>
-    <PackageVersion>0.3.5</PackageVersion>
+    <PackageVersion>0.3.6</PackageVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>strongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>

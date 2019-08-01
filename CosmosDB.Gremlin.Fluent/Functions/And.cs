@@ -8,6 +8,9 @@ namespace CosmosDB.Gremlin.Fluent.Functions
     {
         public static GremlinQueryBuilder And(this GremlinQueryBuilder builder, params GremlinQueryBuilder[] functions)
         {
+            if (functions == null || !functions.Any())
+                throw new GremlinQueryBuilderException(
+                    $"{nameof(And)} requires at least one parameter in {nameof(functions)}");
             builder.AddArguments(functions?.SelectMany(f => f.GremlinArguments).ToArray() ?? new GremlinArgument[0]);
             return builder.Add($"and({functions.Expand()})");
         }
