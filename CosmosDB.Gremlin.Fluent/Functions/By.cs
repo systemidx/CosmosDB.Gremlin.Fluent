@@ -1,32 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class ByFunction
     {
-        public static GremlinQueryBuilder By(this GremlinQueryBuilder builder, IGremlinParameter parameter)
+        public static GremlinQueryBuilder By(this GremlinQueryBuilder builder, params IGremlinParameter[] parameters)
         {
-            if (parameter == null)
-                throw new ArgumentNullException(nameof(parameter));
+            if (parameters == null || !parameters.Any())
+                throw new GremlinQueryBuilderException($"{nameof(By)} requires at least one parameter in {nameof(parameters)}");
             
-            builder.AddArgument(parameter as GremlinArgument);
-            return builder.Add($"by({parameter.Value})");
+            builder.AddArguments(parameters.OfType<GremlinArgument>().ToArray());
+            return builder.Add($"by({parameters.Expand()})");
         }
         
-        // for implicit conversion operators
-        public static GremlinQueryBuilder By(this GremlinQueryBuilder builder, GremlinParameter parameter)
+        public static GremlinQueryBuilder By(this GremlinQueryBuilder builder, params GremlinQueryBuilder[] functions)
         {
-            return builder.By((IGremlinParameter)parameter);
-        }
-
-        public static GremlinQueryBuilder By(this GremlinQueryBuilder builder, GremlinQueryBuilder func)
-        {
-            if (func == null)
-                throw new ArgumentNullException(nameof(func));
+            if (functions == null || !functions.Any())
+                throw new GremlinQueryBuilderException(
+                    $"{nameof(By)} requires at least a single parameter in {nameof(functions)}");
             
-            builder.AddArguments(func.GremlinArguments);
-            return builder.Add($"by({func.Query})");
+            builder.AddArguments(functions.SelectMany(f => f.GremlinArguments).ToArray());
+            return builder.Add($"by({functions.Expand()})");
         }
     }
 }
