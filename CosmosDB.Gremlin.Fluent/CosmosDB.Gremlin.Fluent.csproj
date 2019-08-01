@@ -13,11 +13,12 @@
     <PackageLicenseUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides a fluent LINQ type query builder for building Gremlin queries.</Description>
     <RepositoryUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</RepositoryUrl>
-    <PackageReleaseNotes>v0.3.0: Added support for arguments.
+    <PackageReleaseNotes>v0.3.1: Fixed issue with argument values
+v0.3.0: Added support for arguments.
 Added from, hasId, hasNot, valueMap
 Added implicit parameter support to simplify syntax 
 </PackageReleaseNotes>
-    <PackageVersion>0.3.0</PackageVersion>
+    <PackageVersion>0.3.1</PackageVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>strongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
