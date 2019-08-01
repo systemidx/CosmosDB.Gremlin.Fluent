@@ -4,7 +4,8 @@ namespace CosmosDB.Gremlin.Fluent
 {
     public class GremlinArgument : IGremlinParameter
     {
-        public virtual string Value { get; }
+        public virtual string Value => ArgumentName;
+
         public object ArgumentValue { get; }
         public string ArgumentName { get; }
         
@@ -16,9 +17,9 @@ namespace CosmosDB.Gremlin.Fluent
                 throw new ArgumentNullException(nameof(argumentValue));
             if (string.IsNullOrWhiteSpace(argumentName))
                 throw new GremlinParameterException("Argument name cannot be blank");
-            Value = argumentName;
+
             ArgumentName = argumentName;
-            ArgumentValue = argumentName;
+            ArgumentValue = argumentValue;
         }
     }
 }
