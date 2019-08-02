@@ -1,9 +1,19 @@
 using System;
+using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class HasIdFunction
     {
+        public static GremlinQueryBuilder HasId(this GremlinQueryBuilder builder, params IGremlinParameter[] parameters)
+        {
+            if (parameters == null || !parameters.Any())
+                return builder;
+            
+            builder.AddArguments(parameters.OfType<GremlinArgument>().ToArray());
+            return builder.Add($"hasId({parameters.Expand()})");
+        }
+    
         public static GremlinQueryBuilder HasId(this GremlinQueryBuilder builder, IGremlinParameter parameter)
         {
             if (parameter == null)
@@ -18,5 +28,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
         {
             return builder.HasId((IGremlinParameter)parameter);
         }
+        
+        
     }
 }

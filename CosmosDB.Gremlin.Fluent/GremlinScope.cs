@@ -1,6 +1,6 @@
 namespace CosmosDB.Gremlin.Fluent
 {
-    public class GremlinScope : IGremlinParameter
+    public class GremlinScope
     {
         public string Value { get; }
 
