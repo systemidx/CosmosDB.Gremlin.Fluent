@@ -13,7 +13,8 @@
     <PackageLicenseUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides a fluent LINQ type query builder for building Gremlin queries.</Description>
     <RepositoryUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</RepositoryUrl>
-    <PackageReleaseNotes>v0.3.12: Added within and without predicates
+    <PackageReleaseNotes>v0.3.13: Expanded has functions with support for inner builders for predicate conditions
+v0.3.12: Added within and without predicates
 v0.3.11: Fixed and improved parameter validations
 v0.3.10: Improved hasId() to support multiple parameters correctly
 v0.3.9: Changed type restrictions on several predicates and functions to conform to TinkerPop 3.4.0 specifications
@@ -29,7 +30,7 @@ v0.3.0: Added support for arguments.
 Added from, hasId, hasNot, valueMap
 Added implicit parameter support to simplify syntax 
 </PackageReleaseNotes>
-    <PackageVersion>0.3.12</PackageVersion>
+    <PackageVersion>0.3.13</PackageVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>strongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
