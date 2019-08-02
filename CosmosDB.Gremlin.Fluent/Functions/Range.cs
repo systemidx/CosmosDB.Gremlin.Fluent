@@ -10,12 +10,12 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new ArgumentNullException(nameof(start));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
-            if (!int.TryParse(start.Value, out _))
+            if (!long.TryParse(start.Value, out _))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Range)} only supports integer parameters and scope and '{start.Value}' does not appear to conform to this");
-            if (!int.TryParse(end.Value, out _))
+                    $"{nameof(Range)} only supports numeric parameters and scope and '{start.Value}' does not appear to conform to this");
+            if (!long.TryParse(end.Value, out _))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Range)} only supports integer parameters and scope and '{end.Value}' does not appear to conform to this");
+                    $"{nameof(Range)} only supports numeric parameters and scope and '{end.Value}' does not appear to conform to this");
             
             return builder.Add($"range({start.Value},{end.Value})");
         }
@@ -26,12 +26,12 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new ArgumentNullException(nameof(start));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
-            if (!int.TryParse(start.Value, out _))
+            if (!long.TryParse(start.Value, out _))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Range)} only supports integer parameters and scope and '{start.Value}' does not appear to conform to this");
-            if (!int.TryParse(end.Value, out _))
+                    $"{nameof(Range)} only supports numeric parameters and scope and '{start.Value}' does not appear to conform to this");
+            if (!long.TryParse(end.Value, out _))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Range)} only supports integer parameters and scope and '{end.Value}' does not appear to conform to this");
+                    $"{nameof(Range)} only supports numeric parameters and scope and '{end.Value}' does not appear to conform to this");
 
             return builder.Add($"range({scope.Value},{start.Value},{end.Value})");
         }

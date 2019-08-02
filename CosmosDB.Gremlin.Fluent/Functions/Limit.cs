@@ -8,9 +8,9 @@ using System;
            {
                if (parameter == null)
                    throw new ArgumentNullException(nameof(parameter));
-               if (!int.TryParse(parameter.Value, out _))
+               if (!long.TryParse(parameter.Value, out _))
                    throw new GremlinQueryBuilderException(
-                       $"{nameof(Limit)} only supports integer parameters and scope and '{parameter.Value}' does not appear to conform to this");
+                       $"{nameof(Limit)} only supports numeric parameters and scope and '{parameter.Value}' does not appear to conform to this");
                
                return builder.Add($"limit({parameter.Value})");
            }
@@ -19,9 +19,9 @@ using System;
            {
                if (parameter == null)
                    throw new ArgumentNullException(nameof(parameter));
-               if (!int.TryParse(parameter.Value, out _))
+               if (!long.TryParse(parameter.Value, out _))
                    throw new GremlinQueryBuilderException(
-                       $"{nameof(Limit)} only supports integer parameters and scope and '{parameter.Value}' does not appear to conform to this");
+                       $"{nameof(Limit)} only supports numeric parameters and scope and '{parameter.Value}' does not appear to conform to this");
    
                return builder.Add($"limit({scope.Value},{parameter.Value})");
            }
