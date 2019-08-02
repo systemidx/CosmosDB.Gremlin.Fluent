@@ -9,11 +9,11 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             // this function can only take true or false
             if (parameter == null)
                 throw new ArgumentNullException(nameof(parameter));
-            if (!int.TryParse(parameter.Value, out _))
+            if (!(parameter.TrueValue is int || parameter.TrueValue is uint))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Sample)} only supports integer parameters and scope and '{parameter.Value}' does not appear to conform to this");
+                    $"{nameof(Sample)} only supports integer parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
             
-            return builder.Add($"sample({parameter.Value})");
+            return builder.Add($"sample({parameter.QueryStringValue})");
         }
         
         public static GremlinQueryBuilder Sample(this GremlinQueryBuilder builder, GremlinScope scope, IGremlinParameter parameter)
@@ -21,11 +21,11 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             // this function can only take true or false
             if (parameter == null)
                 throw new ArgumentNullException(nameof(parameter));
-            if (!int.TryParse(parameter.Value, out _))
+            if (!(parameter.TrueValue is int || parameter.TrueValue is uint))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Sample)} only supports integer parameters and scope and '{parameter.Value}' does not appear to conform to this");
+                    $"{nameof(Sample)} only supports integer parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
 
-            return builder.Add($"sample({scope.Value},{parameter.Value})");
+            return builder.Add($"sample({scope.Value},{parameter.QueryStringValue})");
         }
         
         // For implicit operators

@@ -9,11 +9,11 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             // this function can only take true or false
             if (parameter == null)
                 throw new ArgumentNullException(nameof(parameter));
-            if (!long.TryParse(parameter.Value, out _))
+            if (!parameter.IsNumber(true))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Tail)} only supports numeric parameters and scope and '{parameter.Value}' does not appear to conform to this");
+                    $"{nameof(Tail)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
             
-            return builder.Add($"tail({parameter.Value})");
+            return builder.Add($"tail({parameter.QueryStringValue})");
         }
         
         public static GremlinQueryBuilder Tail(this GremlinQueryBuilder builder, GremlinScope scope, IGremlinParameter parameter)
@@ -21,11 +21,11 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             // this function can only take true or false
             if (parameter == null)
                 throw new ArgumentNullException(nameof(parameter));
-            if (!long.TryParse(parameter.Value, out _))
+            if (!parameter.IsNumber(true))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Tail)} only supports numeric parameters and scope and '{parameter.Value}' does not appear to conform to this");
+                    $"{nameof(Tail)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
 
-            return builder.Add($"tail({scope.Value},{parameter.Value})");
+            return builder.Add($"tail({scope.Value},{parameter.QueryStringValue})");
         }
         
         // For implicit operators

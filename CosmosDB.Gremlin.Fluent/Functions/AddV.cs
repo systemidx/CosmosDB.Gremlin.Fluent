@@ -10,7 +10,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new ArgumentNullException(nameof(parameter));
             
             builder.AddArgument(parameter as GremlinArgument);
-            return builder.Add($"addV({parameter.Value})");
+            return builder.Add($"addV({parameter.QueryStringValue})");
         }
         
         // for implicit conversion operators

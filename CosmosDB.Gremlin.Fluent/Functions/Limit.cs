@@ -8,22 +8,22 @@ using System;
            {
                if (parameter == null)
                    throw new ArgumentNullException(nameof(parameter));
-               if (!long.TryParse(parameter.Value, out _))
+               if (!parameter.IsNumber(true))
                    throw new GremlinQueryBuilderException(
-                       $"{nameof(Limit)} only supports numeric parameters and scope and '{parameter.Value}' does not appear to conform to this");
+                       $"{nameof(Limit)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
                
-               return builder.Add($"limit({parameter.Value})");
+               return builder.Add($"limit({parameter.QueryStringValue})");
            }
            
            public static GremlinQueryBuilder Limit(this GremlinQueryBuilder builder, GremlinScope scope, IGremlinParameter parameter)
            {
                if (parameter == null)
                    throw new ArgumentNullException(nameof(parameter));
-               if (!long.TryParse(parameter.Value, out _))
+               if (!parameter.IsNumber(true))
                    throw new GremlinQueryBuilderException(
-                       $"{nameof(Limit)} only supports numeric parameters and scope and '{parameter.Value}' does not appear to conform to this");
+                       $"{nameof(Limit)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
    
-               return builder.Add($"limit({scope.Value},{parameter.Value})");
+               return builder.Add($"limit({scope.Value},{parameter.QueryStringValue})");
            }
 
            // For implicit operators

@@ -2,11 +2,12 @@ namespace CosmosDB.Gremlin.Fluent
 {
     public class GremlinComparator : IGremlinParameter
     {
-        public string Value { get; }
+        public virtual string QueryStringValue { get; }
+        public virtual object TrueValue => QueryStringValue;
 
         public GremlinComparator(string tokenValue)
         {
-            Value = tokenValue;
+            QueryStringValue = tokenValue;
         }
 
         public static GremlinComparator Incr => new GremlinComparator("incr");

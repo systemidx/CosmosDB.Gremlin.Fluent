@@ -4,7 +4,8 @@ namespace CosmosDB.Gremlin.Fluent
 {
     public class GremlinArgument : IGremlinParameter
     {
-        public virtual string Value => ArgumentName;
+        public virtual string QueryStringValue => ArgumentName;
+        public virtual object TrueValue => ArgumentValue;
 
         public object ArgumentValue { get; }
         public string ArgumentName { get; }

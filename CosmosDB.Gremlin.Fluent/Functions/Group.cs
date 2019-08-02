@@ -10,7 +10,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 return builder.Add($"group()");
             
             builder.AddArgument(value as GremlinArgument);
-            return builder.Add($"group({value.Value})");
+            return builder.Add($"group({value.QueryStringValue})");
         }
         
         // for implicit conversion operators

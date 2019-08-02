@@ -16,12 +16,12 @@ namespace CosmosDB.Gremlin.Fluent.Functions
         {
             if (parameter == null)
                 throw new ArgumentNullException(nameof(parameter));
-            if (!decimal.TryParse(parameter.Value, out _))
+            if (!parameter.IsNumber())
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Gt)} only supports numeric parameters and '{parameter.Value}' does not appear to conform to this");
-
+                    $"{nameof(Gt)} only supports numeric parameters and '{parameter.TrueValue}' does not appear to conform to this");
+            
             builder.AddArgument(parameter as GremlinArgument);
-            return builder.Add($"gt({parameter.Value})");
+            return builder.Add($"gt({parameter.QueryStringValue})");
         }
         
         // for implicit conversion operators

@@ -10,17 +10,17 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new ArgumentNullException(nameof(start));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
-            if (!decimal.TryParse(start.Value, out _))
+            if (!start.IsNumber())
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Between)} only supports numeric parameters and '{start.Value}' does not appear to conform to this");
-            if (!decimal.TryParse(end.Value, out _))
+                    $"{nameof(Between)} only supports numeric parameters and '{start.TrueValue}' does not appear to conform to this");
+            if (!end.IsNumber())
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Between)} only supports numeric parameters and '{end.Value}' does not appear to conform to this");
+                    $"{nameof(Between)} only supports numeric parameters and '{end.TrueValue}' does not appear to conform to this");
 
             
             builder.AddArgument(start as GremlinArgument);
             builder.AddArgument(end as GremlinArgument);
-            return builder.Add($"between({start.Value},{end.Value})");
+            return builder.Add($"between({start.QueryStringValue},{end.QueryStringValue})");
         }
         
         // for implicit conversion operators

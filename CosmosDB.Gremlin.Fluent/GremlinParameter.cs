@@ -2,21 +2,37 @@
 {
     public class GremlinParameter : IGremlinParameter
     {
-        public virtual string Value { get; }
+        public virtual string QueryStringValue { get; }
+        public virtual object TrueValue { get; }
 
         public GremlinParameter(string parameter)
         {
-            Value = $"'{Sanitize(parameter)}'";
+            QueryStringValue = $"'{Sanitize(parameter)}'";
+            TrueValue = parameter;
         }
 
         public GremlinParameter(int parameter)
         {
-            Value = $"{parameter}";
+            QueryStringValue = $"{parameter}";
+            TrueValue = parameter;
+        }
+        
+        public GremlinParameter(long parameter)
+        {
+            QueryStringValue = $"{parameter}";
+            TrueValue = parameter;
+        }
+        
+        public GremlinParameter(decimal parameter)
+        {
+            QueryStringValue = $"{parameter}";
+            TrueValue = parameter;
         }
 
         public GremlinParameter(bool parameter)
         {
-            Value = $"{parameter}".ToLowerInvariant();
+            QueryStringValue = $"{parameter}".ToLowerInvariant();
+            TrueValue = parameter;
         }
 
         public static implicit operator GremlinParameter(int parameter)
@@ -30,6 +46,16 @@
         }
         
         public static implicit operator GremlinParameter(bool parameter)
+        {
+            return new GremlinParameter(parameter);
+        }
+        
+        public static implicit operator GremlinParameter(long parameter)
+        {
+            return new GremlinParameter(parameter);
+        }
+        
+        public static implicit operator GremlinParameter(decimal parameter)
         {
             return new GremlinParameter(parameter);
         }

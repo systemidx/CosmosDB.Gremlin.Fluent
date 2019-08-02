@@ -10,14 +10,14 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new ArgumentNullException(nameof(start));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
-            if (!long.TryParse(start.Value, out _))
+            if (!start.IsNumber(true))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Range)} only supports numeric parameters and scope and '{start.Value}' does not appear to conform to this");
-            if (!long.TryParse(end.Value, out _))
+                    $"{nameof(Range)} only supports numeric parameters and scope and '{start.TrueValue}' does not appear to conform to this");
+            if (!end.IsNumber(true))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Range)} only supports numeric parameters and scope and '{end.Value}' does not appear to conform to this");
+                    $"{nameof(Range)} only supports numeric parameters and scope and '{end.TrueValue}' does not appear to conform to this");
             
-            return builder.Add($"range({start.Value},{end.Value})");
+            return builder.Add($"range({start.QueryStringValue},{end.QueryStringValue})");
         }
         
         public static GremlinQueryBuilder Range(this GremlinQueryBuilder builder, GremlinScope scope, IGremlinParameter start, IGremlinParameter end)
@@ -26,14 +26,14 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new ArgumentNullException(nameof(start));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
-            if (!long.TryParse(start.Value, out _))
+            if (!start.IsNumber(true))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Range)} only supports numeric parameters and scope and '{start.Value}' does not appear to conform to this");
-            if (!long.TryParse(end.Value, out _))
+                    $"{nameof(Range)} only supports numeric parameters and scope and '{start.TrueValue}' does not appear to conform to this");
+            if (!end.IsNumber(true))
                 throw new GremlinQueryBuilderException(
-                    $"{nameof(Range)} only supports numeric parameters and scope and '{end.Value}' does not appear to conform to this");
+                    $"{nameof(Range)} only supports numeric parameters and scope and '{end.TrueValue}' does not appear to conform to this");
 
-            return builder.Add($"range({scope.Value},{start.Value},{end.Value})");
+            return builder.Add($"range({scope.Value},{start.QueryStringValue},{end.QueryStringValue})");
         }
         
         // For implicit operators

@@ -10,7 +10,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 return builder.Add($"tree()");
             
             builder.AddArgument(sideEffectKey as GremlinArgument);
-            return builder.Add($"tree({sideEffectKey.Value})");
+            return builder.Add($"tree({sideEffectKey.QueryStringValue})");
         }
         
         // for implicit conversion operators
