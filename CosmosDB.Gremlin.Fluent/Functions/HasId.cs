@@ -8,21 +8,12 @@ namespace CosmosDB.Gremlin.Fluent.Functions
         public static GremlinQueryBuilder HasId(this GremlinQueryBuilder builder, params IGremlinParameter[] parameters)
         {
             if (parameters == null || !parameters.Any())
-                return builder;
+                throw new GremlinQueryBuilderException($"{nameof(HasId)} requires at least one parameter in {nameof(parameters)}");
             
             builder.AddArguments(parameters.OfType<GremlinArgument>().ToArray());
             return builder.Add($"hasId({parameters.Expand()})");
         }
     
-        public static GremlinQueryBuilder HasId(this GremlinQueryBuilder builder, IGremlinParameter parameter)
-        {
-            if (parameter == null)
-                throw new ArgumentNullException(nameof(parameter));
-            
-            builder.AddArgument(parameter as GremlinArgument);
-            return builder.Add($"hasId({parameter.Value})");
-        }
-        
         // for implicit conversion operators
         public static GremlinQueryBuilder HasId(this GremlinQueryBuilder builder, GremlinParameter parameter)
         {
