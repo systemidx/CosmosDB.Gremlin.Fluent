@@ -14,6 +14,22 @@ namespace CosmosDB.Gremlin.Fluent
 
         protected internal List<GremlinArgument> GremlinArguments { get; set; } = new List<GremlinArgument>();
 
+        public GremlinQueryBuilder()
+        {
+            
+        }
+
+        /// <summary>
+        /// Special constructor for initialising builder from a single parameter.
+        /// Useful for complex chaining, e.g. has('price', between(10, 99)) etc.
+        /// </summary>
+        /// <param name="parameter">Gremlin parameter to initialise the builder with</param>
+        public GremlinQueryBuilder(IGremlinParameter parameter)
+        {
+            AddArgument(parameter as GremlinArgument);
+            Add(parameter.QueryStringValue);
+        }
+
         protected internal void AddArgument(GremlinArgument argument)
         {
             // we accept null arguments to minimise boilerplate
@@ -50,5 +66,6 @@ namespace CosmosDB.Gremlin.Fluent
 
             return this;
         }
+        
     }
 }
