@@ -12,6 +12,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             if (!(parameter.TrueValue is int || parameter.TrueValue is uint))
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Sample)} only supports integer parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
+            builder.AddArgument(parameter as GremlinArgument);
             
             return builder.Add($"sample({parameter.QueryStringValue})");
         }
@@ -24,7 +25,8 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             if (!(parameter.TrueValue is int || parameter.TrueValue is uint))
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Sample)} only supports integer parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
-
+            builder.AddArgument(parameter as GremlinArgument);
+            
             return builder.Add($"sample({scope.Value},{parameter.QueryStringValue})");
         }
         

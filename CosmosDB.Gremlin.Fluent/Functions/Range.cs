@@ -17,6 +17,8 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Range)} only supports numeric parameters and scope and '{end.TrueValue}' does not appear to conform to this");
             
+            builder.AddArgument(start as GremlinArgument);
+            builder.AddArgument(end as GremlinArgument);
             return builder.Add($"range({start.QueryStringValue},{end.QueryStringValue})");
         }
         
@@ -33,6 +35,8 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Range)} only supports numeric parameters and scope and '{end.TrueValue}' does not appear to conform to this");
 
+            builder.AddArgument(start as GremlinArgument);
+            builder.AddArgument(end as GremlinArgument);
             return builder.Add($"range({scope.Value},{start.QueryStringValue},{end.QueryStringValue})");
         }
         

@@ -13,6 +13,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Tail)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
             
+            builder.AddArgument(parameter as GremlinArgument);
             return builder.Add($"tail({parameter.QueryStringValue})");
         }
         
@@ -25,6 +26,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Tail)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
 
+            builder.AddArgument(parameter as GremlinArgument);
             return builder.Add($"tail({scope.Value},{parameter.QueryStringValue})");
         }
         

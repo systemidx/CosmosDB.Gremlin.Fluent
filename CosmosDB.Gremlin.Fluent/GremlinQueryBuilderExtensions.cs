@@ -13,7 +13,7 @@ namespace CosmosDB.Gremlin.Fluent
             if (innerBuilders.Length == 0)
                 return string.Empty;
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder(); 
             for (int i = 0; i < innerBuilders.Length; ++i)
             {
                 if (i > 0)
