@@ -13,7 +13,8 @@
     <PackageLicenseUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides a fluent LINQ type query builder for building Gremlin queries.</Description>
     <RepositoryUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</RepositoryUrl>
-    <PackageReleaseNotes>v0.3.16: Add support for specifying partition strategy on graph traversal sources
+    <PackageReleaseNotes>v0.3.17: Added support for specifying partition keys as query arguments
+v0.3.16: Add support for specifying partition strategy on graph traversal sources
 v0.3.15: Fixed missing argument handling on several functions
 v0.3.14: Added overload to query builder constructor to permit initialising it with a parameter directly. Useful for complex sub-queries
 v0.3.13: Expanded has functions with support for inner builders for predicate conditions
@@ -33,7 +34,7 @@ v0.3.0: Added support for arguments.
 Added from, hasId, hasNot, valueMap
 Added implicit parameter support to simplify syntax 
 </PackageReleaseNotes>
-    <PackageVersion>0.3.16</PackageVersion>
+    <PackageVersion>0.3.17</PackageVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>strongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
