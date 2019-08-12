@@ -11,8 +11,6 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
 
 steps:
   - task: DotNetCoreCLI@2
@@ -24,7 +22,7 @@ steps:
     displayName: 'dotnet build'
     inputs:
       projects: '$(solution)'
-      configuration: '$(buildConfiguration)'
+      configuration: Release
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet test'
