@@ -25,7 +25,7 @@ using System;
                        $"{nameof(Limit)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
    
                builder.AddArgument(parameter as GremlinArgument);
-               return builder.Add($"limit({scope.Value},{parameter.QueryStringValue})");
+               return builder.Add($"limit({scope.QueryStringValue},{parameter.QueryStringValue})");
            }
 
            // For implicit operators

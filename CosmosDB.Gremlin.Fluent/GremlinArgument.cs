@@ -14,13 +14,11 @@ namespace CosmosDB.Gremlin.Fluent
         {
             if (argumentName == null)
                 throw new ArgumentNullException(nameof(argumentName));
-            if (argumentValue == null)
-                throw new ArgumentNullException(nameof(argumentValue));
             if (string.IsNullOrWhiteSpace(argumentName))
                 throw new GremlinParameterException("Argument name cannot be blank");
 
             ArgumentName = argumentName;
-            ArgumentValue = argumentValue;
+            ArgumentValue = argumentValue ?? throw new ArgumentNullException(nameof(argumentValue));
         }
     }
 }

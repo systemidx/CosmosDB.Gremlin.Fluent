@@ -3,10 +3,10 @@ using Xunit;
 
 namespace CosmosDB.Gremlin.Fluent.Tests.Functions
 {
-    public class ByTests
+    public class ByFunctionShould
     {
         [Fact]
-        public void GeneratesCorrectSyntaxWithParameter()
+        public void GenerateCorrectSyntaxWithParameter()
         {
             GremlinQueryBuilder builder = new GremlinQueryBuilder();
             builder.By(new GremlinParameter("myparam"));
@@ -15,7 +15,7 @@ namespace CosmosDB.Gremlin.Fluent.Tests.Functions
         }
 
         [Fact]
-        public void GeneratesCorrectSyntaxWithFunction()
+        public void GenerateCorrectSyntaxWithFunction()
         {
             GremlinQueryBuilder builder = new GremlinQueryBuilder();
             builder.By(new GremlinQueryBuilder().AddE(new GremlinParameter("myparam")));

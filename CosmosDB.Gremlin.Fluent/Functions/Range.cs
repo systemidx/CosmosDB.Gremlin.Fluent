@@ -37,7 +37,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 
             builder.AddArgument(start as GremlinArgument);
             builder.AddArgument(end as GremlinArgument);
-            return builder.Add($"range({scope.Value},{start.QueryStringValue},{end.QueryStringValue})");
+            return builder.Add($"range({scope.QueryStringValue},{start.QueryStringValue},{end.QueryStringValue})");
         }
         
         // For implicit operators
