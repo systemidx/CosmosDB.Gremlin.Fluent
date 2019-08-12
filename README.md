@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/aieat/CosmosDB.Gremlin.Fluent/_apis/build/status/AieatAssam.CosmosDB.Gremlin.Fluent?branchName=master)](https://dev.azure.com/aieat/CosmosDB.Gremlin.Fluent/_build/latest?definitionId=1&branchName=master)
 # CosmosDB.Gremlin.Fluent
 ### A fluent query builder for Gremlin queries.
 Azure CosmosDB Gremlin API does not support Java bytecode as of August 2019. This makes writing queries in Gremlin require constructing them using regular strings. 
