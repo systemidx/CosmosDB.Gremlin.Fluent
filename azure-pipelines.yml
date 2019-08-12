@@ -22,12 +22,13 @@ steps:
     displayName: 'dotnet build'
     inputs:
       projects: '$(solution)'
-      configuration: Release
+      configuration: 'Release'
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet test'
     inputs:
       command: test
+      configuration: 'Release'
       projects: '**/CosmosDB.Gremlin.Fluent.Tests.csproj'
       arguments: /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
 
@@ -41,6 +42,7 @@ steps:
     displayName: 'dotnet pack'
     inputs:
       command: pack
+      configuration: 'Release'
       packagesToPack: '**/CosmosDB.Gremlin.Fluent.csproj'
       packDirectory: '$(Build.ArtifactStagingDirectory)/nupkg'
 
