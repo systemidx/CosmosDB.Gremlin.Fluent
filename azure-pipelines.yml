@@ -29,7 +29,7 @@ steps:
     displayName: 'dotnet test'
     inputs:
       command: test
-      projects: /**/CosmosDB.Gremlin.Fluent.Tests.csproj
+      projects: '**/CosmosDB.Gremlin.Fluent.Tests.csproj'
       arguments: /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
 
   - task: PublishCodeCoverageResults@1
@@ -42,7 +42,7 @@ steps:
     displayName: 'dotnet pack'
     inputs:
       command: pack
-      packagesToPack: /**/CosmosDB.Gremlin.Fluent.csproj
+      packagesToPack: '**/CosmosDB.Gremlin.Fluent.csproj'
       packDirectory: '$(Build.ArtifactStagingDirectory)/nupkg'
 
   - task: PublishBuildArtifacts@1
