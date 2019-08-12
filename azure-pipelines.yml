@@ -22,6 +22,7 @@ steps:
     displayName: 'dotnet build'
     inputs:
       projects: '$(solution)'
+      arguments: --configuration Release
       configuration: 'Release'
 
   - task: DotNetCoreCLI@2
@@ -43,6 +44,7 @@ steps:
     inputs:
       command: pack
       configuration: 'Release'
+      arguments: --configuration Release
       packagesToPack: '**/CosmosDB.Gremlin.Fluent.csproj'
       packDirectory: '$(Build.ArtifactStagingDirectory)/nupkg'
 
