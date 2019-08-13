@@ -3,17 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.2.7</Version>
-    <AssemblyVersion>0.2.7.0</AssemblyVersion>
-    <FileVersion>0.2.7.0</FileVersion>
+    <Version>0.3.18</Version>
+    <AssemblyVersion>0.3.18.0</AssemblyVersion>
+    <FileVersion>0.3.18.0</FileVersion>
     <Authors>systemidx, A. Assam</Authors>
     <Company />
     <PackageTags>gremlin, cosmosdb, tinkerpop</PackageTags>
-    <PackageProjectUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/AieatAssam/CosmosDB.Gremlin.Fluent</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/AieatAssam/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides a fluent LINQ type query builder for building Gremlin queries.</Description>
-    <RepositoryUrl>https://github.com/systemidx/CosmosDB.Gremlin.Fluent</RepositoryUrl>
-    <PackageReleaseNotes>v0.3.17: Added support for specifying partition keys as query arguments
+    <RepositoryUrl>https://github.com/AieatAssam/CosmosDB.Gremlin.Fluent</RepositoryUrl>
+    <PackageReleaseNotes>v0.3.18: Documented all functions, tested them against CosmosDb. Added several missing functions. Hardened parameter checks and added missing overloads. Removed functions not supported by CosmosDb.
+v0.3.17: Added support for specifying partition keys as query arguments
 v0.3.16: Add support for specifying partition strategy on graph traversal sources
 v0.3.15: Fixed missing argument handling on several functions
 v0.3.14: Added overload to query builder constructor to permit initialising it with a parameter directly. Useful for complex sub-queries
@@ -34,7 +35,7 @@ v0.3.0: Added support for arguments.
 Added from, hasId, hasNot, valueMap
 Added implicit parameter support to simplify syntax 
 </PackageReleaseNotes>
-    <PackageVersion>0.3.17</PackageVersion>
+    <PackageVersion>0.3.18</PackageVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>strongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
