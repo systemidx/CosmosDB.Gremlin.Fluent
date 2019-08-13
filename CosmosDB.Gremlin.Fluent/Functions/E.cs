@@ -1,23 +1,28 @@
 ﻿using System;
+using System.Linq;
 using CosmosDB.Gremlin.Fluent;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class EFunction
-    { 
-        public static GremlinQueryBuilder E(this GremlinQueryBuilder builder, IGremlinParameter parameter = null)
+    {
+        /// <summary>
+        /// Inject edges into traversal. Can filter by specified edge ids.
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public static GremlinQueryBuilder E(this GremlinQueryBuilder builder, params IGremlinParameter[] parameters)
         {
-            if (parameter == null)
-                throw new ArgumentNullException(nameof(parameter));
-            
-            builder.AddArgument(parameter as GremlinArgument);
-            return builder.Add($"E({parameter.QueryStringValue})");
-        }
-        
-        // for implicit conversion operators
-        public static GremlinQueryBuilder E(this GremlinQueryBuilder builder, GremlinParameter parameter)
-        {
-            return builder.E((IGremlinParameter)parameter);
+            if (parameters == null || !parameters.Any())
+            {
+                return builder.Add("E()");
+            }
+            else
+            {
+                builder.AddArguments(parameters.OfType<GremlinArgument>().ToArray());
+                return builder.Add($"E({parameters.Expand()})");
+            }
         }
     }
 }

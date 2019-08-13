@@ -23,7 +23,13 @@
             TrueValue = parameter;
         }
         
-        public GremlinParameter(decimal parameter)
+        public GremlinParameter(double parameter)
+        {
+            QueryStringValue = $"{parameter}";
+            TrueValue = parameter;
+        }
+
+        public GremlinParameter(float parameter)
         {
             QueryStringValue = $"{parameter}";
             TrueValue = parameter;
@@ -32,6 +38,12 @@
         public GremlinParameter(bool parameter)
         {
             QueryStringValue = $"{parameter}".ToLowerInvariant();
+            TrueValue = parameter;
+        }
+
+        public GremlinParameter(byte parameter)
+        {
+            QueryStringValue = $"{parameter}";
             TrueValue = parameter;
         }
 
@@ -55,11 +67,21 @@
             return new GremlinParameter(parameter);
         }
         
-        public static implicit operator GremlinParameter(decimal parameter)
+        public static implicit operator GremlinParameter(double parameter)
         {
             return new GremlinParameter(parameter);
         }
-        
+
+        public static implicit operator GremlinParameter(float parameter)
+        {
+            return new GremlinParameter(parameter);
+        }
+
+        public static implicit operator GremlinParameter(byte parameter)
+        {
+            return new GremlinParameter(parameter);
+        }
+
         protected virtual string Sanitize(string parameter)
         {
             if (string.IsNullOrEmpty(parameter))

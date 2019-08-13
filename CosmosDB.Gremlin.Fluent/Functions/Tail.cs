@@ -27,7 +27,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                     $"{nameof(Tail)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
 
             builder.AddArgument(parameter as GremlinArgument);
-            return builder.Add($"tail({scope.Value},{parameter.QueryStringValue})");
+            return builder.Add($"tail({scope.QueryStringValue},{parameter.QueryStringValue})");
         }
         
         // For implicit operators

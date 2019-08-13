@@ -8,7 +8,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
         public static GremlinQueryBuilder Out(this GremlinQueryBuilder builder, params IGremlinParameter[] parameters)
         {
             if (parameters == null || !parameters.Any())
-                return builder;
+                return builder.Add($"out()");
             
             builder.AddArguments(parameters.OfType<GremlinArgument>().ToArray());
             return builder.Add($"out({parameters.Expand()})");

@@ -27,7 +27,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
                     $"{nameof(Sample)} only supports integer parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
             builder.AddArgument(parameter as GremlinArgument);
             
-            return builder.Add($"sample({scope.Value},{parameter.QueryStringValue})");
+            return builder.Add($"sample({scope.QueryStringValue},{parameter.QueryStringValue})");
         }
         
         // For implicit operators
