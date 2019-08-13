@@ -4,6 +4,14 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class SampleFunction
     {
+        /// <summary>
+        /// The sample()-step is useful for sampling some number of traversers previous in the traversal
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
         public static GremlinQueryBuilder Sample(this GremlinQueryBuilder builder, IGremlinParameter parameter)
         {
             // this function can only take true or false
@@ -12,11 +20,20 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             if (!(parameter.TrueValue is int || parameter.TrueValue is uint))
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Sample)} only supports integer parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
-            builder.AddArgument(parameter as GremlinArgument);
             
+            builder.AddArgument(parameter as GremlinArgument);
             return builder.Add($"sample({parameter.QueryStringValue})");
         }
         
+        /// <summary>
+        /// The sample()-step is useful for sampling some number of traversers previous in the traversal
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="scope"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
         public static GremlinQueryBuilder Sample(this GremlinQueryBuilder builder, GremlinScope scope, IGremlinParameter parameter)
         {
             // this function can only take true or false
@@ -25,21 +42,35 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             if (!(parameter.TrueValue is int || parameter.TrueValue is uint))
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Sample)} only supports integer parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
-            builder.AddArgument(parameter as GremlinArgument);
             
+            builder.AddArgument(parameter as GremlinArgument);
             return builder.Add($"sample({scope.QueryStringValue},{parameter.QueryStringValue})");
         }
         
-        // For implicit operators
+        /// <summary>
+        /// The sample()-step is useful for sampling some number of traversers previous in the traversal
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="scope"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public static GremlinQueryBuilder Sample(this GremlinQueryBuilder builder, GremlinScope scope,
-            GremlinParameter parameter)
+            int parameter)
         {
-            return builder.Sample(scope, (IGremlinParameter) parameter);
+            // For implicit operators
+            return builder.Sample(scope, (GremlinParameter) parameter);
         }
            
-        public static GremlinQueryBuilder Sample(this GremlinQueryBuilder builder, GremlinParameter parameter)
+        /// <summary>
+        /// The sample()-step is useful for sampling some number of traversers previous in the traversal
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        public static GremlinQueryBuilder Sample(this GremlinQueryBuilder builder, int parameter)
         {
-            return builder.Sample((IGremlinParameter) parameter);
+            // For implicit operators
+            return builder.Sample((GremlinParameter) parameter);
         }
     }
 }

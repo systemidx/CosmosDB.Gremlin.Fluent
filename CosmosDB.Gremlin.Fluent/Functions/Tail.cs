@@ -4,11 +4,20 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class TailFunction
     {
-        public static GremlinQueryBuilder Tail(this GremlinQueryBuilder builder, IGremlinParameter parameter)
+        /// <summary>
+        /// The tail()-step is analogous to limit()-step, except that it emits the last n-objects
+        /// instead of the first n-objects
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
+        public static GremlinQueryBuilder Tail(this GremlinQueryBuilder builder, IGremlinParameter parameter = null)
         {
-            // this function can only take true or false
             if (parameter == null)
-                throw new ArgumentNullException(nameof(parameter));
+                return builder.Add("tail()");
+            
             if (!parameter.IsNumber(true))
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Tail)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
@@ -16,12 +25,25 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             builder.AddArgument(parameter as GremlinArgument);
             return builder.Add($"tail({parameter.QueryStringValue})");
         }
-        
+
+        /// <summary>
+        /// The tail()-step is analogous to limit()-step, except that it emits the last n-objects
+        /// instead of the first n-objects
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="scope"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
         public static GremlinQueryBuilder Tail(this GremlinQueryBuilder builder, GremlinScope scope, IGremlinParameter parameter)
         {
-            // this function can only take true or false
+            if (scope == null)
+                throw new ArgumentNullException(nameof(scope));
+
             if (parameter == null)
-                throw new ArgumentNullException(nameof(parameter));
+                return builder.Add($"tail({scope.QueryStringValue})");
+            
             if (!parameter.IsNumber(true))
                 throw new GremlinQueryBuilderException(
                     $"{nameof(Tail)} only supports numeric parameters and scope and '{parameter.TrueValue}' does not appear to conform to this");
@@ -29,17 +51,37 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             builder.AddArgument(parameter as GremlinArgument);
             return builder.Add($"tail({scope.QueryStringValue},{parameter.QueryStringValue})");
         }
-        
-        // For implicit operators
+
+        /// <summary>
+        /// The tail()-step is analogous to limit()-step, except that it emits the last n-objects
+        /// instead of the first n-objects
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="scope"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
         public static GremlinQueryBuilder Tail(this GremlinQueryBuilder builder, GremlinScope scope,
-            GremlinParameter parameter)
+            long parameter)
         {
-            return builder.Tail(scope, (IGremlinParameter) parameter);
+            // shortcut overload for common scenario
+            return builder.Tail(scope, (GremlinParameter) parameter);
         }
            
-        public static GremlinQueryBuilder Tail(this GremlinQueryBuilder builder, GremlinParameter parameter)
+        /// <summary>
+        /// The tail()-step is analogous to limit()-step, except that it emits the last n-objects
+        /// instead of the first n-objects
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
+        public static GremlinQueryBuilder Tail(this GremlinQueryBuilder builder, long parameter)
         {
-            return builder.Tail((IGremlinParameter) parameter);
+            // shortcut overload for common scenario
+            return builder.Tail((GremlinParameter) parameter);
         }
     }
 }

@@ -5,29 +5,37 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class HasNotFunction
     {
-        public static GremlinQueryBuilder HasNot(this GremlinQueryBuilder builder, params GremlinQueryBuilder[] functions)
+        /// <summary>
+        /// Remove the traverser if its element has a value for the key
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static GremlinQueryBuilder HasNot(this GremlinQueryBuilder builder, IGremlinParameter key)
         {
-            if (functions == null || !functions.Any())
-                throw new GremlinQueryBuilderException($"{nameof(HasNot)} requires at least one parameter in {nameof(functions)}");
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+            if (!(key.TrueValue is string))
+                throw new GremlinQueryBuilderException(
+                    $"{nameof(HasNot)} only accepts {nameof(key)} that resolves to string " +
+                    $"and {key.TrueValue} does not");
             
-            builder.AddArguments(functions?.SelectMany(f => f.GremlinArguments).ToArray() ?? new GremlinArgument[0]);
-
-            return builder.Add($"hasNot({functions.Expand()})");
+            builder.AddArgument(key as GremlinArgument);
+            return builder.Add($"hasNot({key.QueryStringValue})");
         }
         
-        public static GremlinQueryBuilder HasNot(this GremlinQueryBuilder builder, IGremlinParameter parameter)
+        /// <summary>
+        /// Remove the traverser if its element has a value for the key
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static GremlinQueryBuilder HasNot(this GremlinQueryBuilder builder, string key)
         {
-            if (parameter == null)
-                throw new ArgumentNullException(nameof(parameter));
-            
-            builder.AddArgument(parameter as GremlinArgument);
-            return builder.Add($"hasNot({parameter.QueryStringValue})");
-        }
-        
-        // for implicit conversion operators
-        public static GremlinQueryBuilder HasNot(this GremlinQueryBuilder builder, GremlinParameter parameter)
-        {
-            return builder.HasNot((IGremlinParameter)parameter);
+            // for implicit conversion operators
+            return builder.HasNot((GremlinParameter)key);
         }
     }
 }

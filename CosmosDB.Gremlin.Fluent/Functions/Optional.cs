@@ -1,13 +1,23 @@
+using System;
+
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class OptionalFunction
     {
-        public static GremlinQueryBuilder Optional(this GremlinQueryBuilder builder, GremlinQueryBuilder inner)
+        /// <summary>
+        /// The optional()-step (branch/flatMap) returns the result of the specified traversal
+        /// if it yields a result else it returns the calling element, i.e. the identity()
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="traversal"></param>
+        /// <returns></returns>
+        public static GremlinQueryBuilder Optional(this GremlinQueryBuilder builder, GremlinQueryBuilder traversal)
         {
-            if (inner == null)
-                return builder;
-            builder.AddArguments(inner.GremlinArguments);
-            return builder.Add($"optional({inner.Query})");
+            if (traversal == null)
+                throw new ArgumentNullException(nameof(traversal));
+            
+            builder.AddArguments(traversal.GremlinArguments);
+            return builder.Add($"optional({traversal.Query})");
         }
     }
 }

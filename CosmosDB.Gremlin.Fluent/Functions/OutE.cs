@@ -4,13 +4,24 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class OutEFunction
     {
-        public static GremlinQueryBuilder OutE(this GremlinQueryBuilder builder, params IGremlinParameter[] parameters)
+        /// <summary>
+        /// Move to the outgoing incident edges given the edge labels
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="edgeLabels"></param>
+        /// <returns></returns>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
+        public static GremlinQueryBuilder OutE(this GremlinQueryBuilder builder, params IGremlinParameter[] edgeLabels)
         {
-            if (parameters == null || !parameters.Any())
-                return builder;
+            if (edgeLabels == null || !edgeLabels.Any())
+                return builder.Add("outE()");
             
-            builder.AddArguments(parameters.OfType<GremlinArgument>().ToArray());
-            return builder.Add($"outE({parameters.Expand()})");
+            if (!edgeLabels.All(l => l.TrueValue is string))
+                throw new GremlinQueryBuilderException(
+                    $"{nameof(OutE)} only supports {nameof(edgeLabels)} that resolve to strings");
+
+            builder.AddArguments(edgeLabels.OfType<GremlinArgument>().ToArray());
+            return builder.Add($"outE({edgeLabels.Expand()})");
         }
     }
 }

@@ -1,13 +1,22 @@
+using System;
+
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class RepeatFunction
     {
-        public static GremlinQueryBuilder Repeat(this GremlinQueryBuilder builder, GremlinQueryBuilder inner)
+        /// <summary>
+        /// The repeat()-step (branch) is used for looping over a traversal given some break predicate
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="traversal"></param>
+        /// <returns></returns>
+        public static GremlinQueryBuilder Repeat(this GremlinQueryBuilder builder, GremlinQueryBuilder traversal)
         {
-            if (inner == null)
-                return builder;
-            builder.AddArguments(inner.GremlinArguments);
-            return builder.Add($"repeat({inner.Query})");
+            if (traversal == null)
+                throw new ArgumentNullException(nameof(traversal));
+            
+            builder.AddArguments(traversal.GremlinArguments);
+            return builder.Add($"repeat({traversal.Query})");
         }
     }
 }
