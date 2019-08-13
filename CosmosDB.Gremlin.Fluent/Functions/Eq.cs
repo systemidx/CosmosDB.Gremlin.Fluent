@@ -4,14 +4,12 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class EqFunction
     {
-        public static GremlinQueryBuilder Eq(this GremlinQueryBuilder builder, GremlinQueryBuilder inner)
-        {
-            if (inner == null)
-                return builder;
-            builder.AddArguments(inner.GremlinArguments);
-            return builder.Add($"eq({inner.Query})");
-        }
-
+        /// <summary>
+        /// Predicate testing that the incoming object is equal to the provided object
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public static GremlinQueryBuilder Eq(this GremlinQueryBuilder builder, IGremlinParameter parameter)
         {
             if (parameter == null)
@@ -21,9 +19,15 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             return builder.Add($"eq({parameter.QueryStringValue})");
         }
         
-        // for implicit conversion operators
+        /// <summary>
+        /// Predicate testing that the incoming object is equal to the provided object
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public static GremlinQueryBuilder Eq(this GremlinQueryBuilder builder, GremlinParameter parameter)
         {
+            // for implicit conversion operators
             return builder.Eq((IGremlinParameter)parameter);
         }
     }

@@ -4,6 +4,16 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class BetweenFunction
     {
+        /// <summary>
+        /// Predicate that checks if the incoming number is greater than or equal
+        /// to the first provided number and less than the second
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
         public static GremlinQueryBuilder Between(this GremlinQueryBuilder builder, IGremlinParameter start, IGremlinParameter end)
         {
             if (start == null)
@@ -23,9 +33,19 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             return builder.Add($"between({start.QueryStringValue},{end.QueryStringValue})");
         }
         
-        // for implicit conversion operators
+        /// <summary>
+        /// Predicate that checks if the incoming number is greater than or equal
+        /// to the first provided number and less than the second
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
         public static GremlinQueryBuilder Between(this GremlinQueryBuilder builder, GremlinParameter start, GremlinParameter end)
         {
+            // for implicit conversion operators
             return builder.Between((IGremlinParameter)start,(IGremlinParameter)end);
         }
     }

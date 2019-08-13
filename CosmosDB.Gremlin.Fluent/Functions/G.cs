@@ -8,6 +8,11 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class GFunction
     {
+        /// <summary>
+        /// Create a new graph traversal source
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
         public static GremlinQueryBuilder G(this GremlinQueryBuilder builder)
         {
             return builder.Add("g");
