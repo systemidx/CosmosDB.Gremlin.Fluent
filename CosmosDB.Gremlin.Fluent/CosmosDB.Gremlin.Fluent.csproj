@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>0.3.18</Version>
-    <AssemblyVersion>0.3.19.0</AssemblyVersion>
-    <FileVersion>0.3.19.0</FileVersion>
+    <AssemblyVersion>0.3.20.0</AssemblyVersion>
+    <FileVersion>0.3.20.0</FileVersion>
     <Authors>systemidx, A. Assam</Authors>
     <Company />
     <PackageTags>gremlin, cosmosdb, tinkerpop</PackageTags>
@@ -13,7 +13,8 @@
     <PackageLicenseUrl>https://github.com/AieatAssam/CosmosDB.Gremlin.Fluent/blob/master/LICENSE</PackageLicenseUrl>
     <Description>Provides a fluent LINQ type query builder for building Gremlin queries.</Description>
     <RepositoryUrl>https://github.com/AieatAssam/CosmosDB.Gremlin.Fluent</RepositoryUrl>
-    <PackageReleaseNotes>v0.3.19: Added is() function
+    <PackageReleaseNotes>v0.3.20: Additional functions, overloads and extensive hardening
+v0.3.19: Added is() function
 v0.3.18: Documented all functions, tested them against CosmosDb. Added several missing functions. Hardened parameter checks and added missing overloads. Removed functions not supported by CosmosDb.
 v0.3.17: Added support for specifying partition keys as query arguments
 v0.3.16: Add support for specifying partition strategy on graph traversal sources
@@ -36,7 +37,7 @@ v0.3.0: Added support for arguments.
 Added from, hasId, hasNot, valueMap
 Added implicit parameter support to simplify syntax 
 </PackageReleaseNotes>
-    <PackageVersion>0.3.19</PackageVersion>
+    <PackageVersion>0.3.20</PackageVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>strongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>

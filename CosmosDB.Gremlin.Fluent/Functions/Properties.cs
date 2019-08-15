@@ -4,13 +4,22 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class PropertiesFunction
     {
-        public static GremlinQueryBuilder Properties(this GremlinQueryBuilder builder, params IGremlinParameter[] parameters)
+        /// <summary>
+        /// The properties()-step (map) extracts properties from an Element in the traversal stream
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="propertyKeys"></param>
+        /// <returns></returns>
+        public static GremlinQueryBuilder Properties(this GremlinQueryBuilder builder, params IGremlinParameter[] propertyKeys)
         {
-            if (parameters == null || !parameters.Any())
+            if (propertyKeys == null || !propertyKeys.Any())
                 return builder.Add($"properties()");
+            if (!propertyKeys.All(k => k.TrueValue is string))
+                throw new GremlinQueryBuilderException(
+                    $"{nameof(Properties)} only accepts {nameof(propertyKeys)} that resolve to strings");
             
-            builder.AddArguments(parameters.OfType<GremlinArgument>().ToArray());
-            return builder.Add($"properties({parameters.Expand()})");
+            builder.AddArguments(propertyKeys.OfType<GremlinArgument>().ToArray());
+            return builder.Add($"properties({propertyKeys.Expand()})");
         }
     }
 }

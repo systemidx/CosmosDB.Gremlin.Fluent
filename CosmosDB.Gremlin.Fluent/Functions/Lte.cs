@@ -4,14 +4,14 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class LteFunction
     {
-        public static GremlinQueryBuilder Lte(this GremlinQueryBuilder builder, GremlinQueryBuilder inner)
-        {
-            if (inner == null)
-                return builder;
-            builder.AddArguments(inner.GremlinArguments);
-            return builder.Add($"lte({inner.Query})");
-        }
-
+        /// <summary>
+        /// Predicate testing if the incoming number is less than or equal to the argument numeric value
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
         public static GremlinQueryBuilder Lte(this GremlinQueryBuilder builder, IGremlinParameter parameter)
         {
             if (parameter == null)
@@ -24,9 +24,17 @@ namespace CosmosDB.Gremlin.Fluent.Functions
             return builder.Add($"lte({parameter.QueryStringValue})");
         }
         
-        // for implicit conversion operators
+        /// <summary>
+        /// Predicate testing if the incoming number is less than or equal to the argument numeric value
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
         public static GremlinQueryBuilder Lte(this GremlinQueryBuilder builder, GremlinParameter parameter)
         {
+            // for implicit conversion operators
             return builder.Lte((IGremlinParameter)parameter);
         }
     }

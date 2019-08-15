@@ -5,29 +5,52 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class HasLabelFunction
     {
-        public static GremlinQueryBuilder HasLabel(this GremlinQueryBuilder builder, params GremlinQueryBuilder[] functions)
+        /// <summary>
+        /// Remove the traverser if its element does not have any of the labels
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static GremlinQueryBuilder HasLabel(this GremlinQueryBuilder builder, GremlinQueryBuilder predicate)
         {
-            if (functions == null || !functions.Any())
-                throw new GremlinQueryBuilderException($"{nameof(HasLabel)} requires at least one parameter in {nameof(functions)}");
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
             
-            builder.AddArguments(functions?.SelectMany(f => f.GremlinArguments).ToArray() ?? new GremlinArgument[0]);
-
-            return builder.Add($"hasLabel({functions.Expand()})");
+            builder.AddArguments(predicate.GremlinArguments);
+            return builder.Add($"hasLabel({predicate.Query})");
         }
         
-        public static GremlinQueryBuilder HasLabel(this GremlinQueryBuilder builder, IGremlinParameter parameter)
+        /// <summary>
+        /// Remove the traverser if its element does not have any of the labels
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
+        public static GremlinQueryBuilder HasLabel(this GremlinQueryBuilder builder, params IGremlinParameter[] values)
         {
-            if (parameter == null)
-                throw new ArgumentNullException(nameof(parameter));
+            if (values == null || !values.Any())
+                throw new GremlinQueryBuilderException(
+                    $"{nameof(HasLabel)} requires one or more arguments to be supplied in {nameof(values)}");
+            if (!values.All(v => v.TrueValue is string))
+                throw new GremlinQueryBuilderException(
+                    $"{nameof(HasLabel)} only accepts arguments that resolve to strings in {nameof(values)}");
             
-            builder.AddArgument(parameter as GremlinArgument);
-            return builder.Add($"hasLabel({parameter.QueryStringValue})");
+            builder.AddArguments(values.OfType<GremlinArgument>().ToArray());
+            return builder.Add($"hasLabel({values.Expand()})");
         }
         
-        // for implicit conversion operators
-        public static GremlinQueryBuilder HasLabel(this GremlinQueryBuilder builder, GremlinParameter parameter)
+        /// <summary>
+        /// Remove the traverser if its element does not have any of the labels
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="label"></param>
+        /// <returns></returns>
+        public static GremlinQueryBuilder HasLabel(this GremlinQueryBuilder builder, string label)
         {
-            return builder.HasLabel((IGremlinParameter)parameter);
+            // for implicit conversion operators with common single label scenario
+            return builder.HasLabel((GremlinParameter)label);
         }
     }
 }

@@ -4,12 +4,21 @@ namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class NotFunction
     {
-        public static GremlinQueryBuilder Not(this GremlinQueryBuilder builder, GremlinQueryBuilder inner)
+        /// <summary>
+        /// The not()-step (filter) removes objects from the traversal stream when the traversal
+        /// provided as an argument returns an object
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="traversal"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static GremlinQueryBuilder Not(this GremlinQueryBuilder builder, GremlinQueryBuilder traversal)
         {
-            if (inner == null)
-                throw new ArgumentNullException(nameof(inner),$"{nameof(inner)} cannot be null");
-            builder.AddArguments(inner.GremlinArguments);
-            return builder.Add($"not({inner.Query})");
+            if (traversal == null)
+                throw new ArgumentNullException(nameof(traversal),$"{nameof(traversal)} cannot be null");
+            
+            builder.AddArguments(traversal.GremlinArguments);
+            return builder.Add($"not({traversal.Query})");
         }
     }
 }

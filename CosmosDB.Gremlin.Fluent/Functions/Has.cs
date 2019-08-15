@@ -1,26 +1,85 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
     public static class HasFunction
     {
-        public static GremlinQueryBuilder Has(this GremlinQueryBuilder builder, params GremlinQueryBuilder[] functions)
+        /// <summary>
+        /// It is possible to filter vertices, edges, and vertex properties based on their properties using has()-step (filter)
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="key"></param>
+        /// <param name="traversal"></param>
+        /// <returns></returns>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
+        public static GremlinQueryBuilder Has(this GremlinQueryBuilder builder, IGremlinParameter key, GremlinQueryBuilder traversal)
         {
-            if (functions == null || !functions.Any())
-                throw new GremlinQueryBuilderException($"{nameof(Has)} requires at least one parameter in {nameof(functions)}");
+            if (traversal == null)
+                throw new ArgumentNullException(nameof(traversal));
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+            if (!(key.TrueValue is string))
+                throw new GremlinQueryBuilderException($"{nameof(key)} must always resolve to a string for property key and {key.TrueValue} does not");
             
-            builder.AddArguments(functions?.SelectMany(f => f.GremlinArguments).ToArray() ?? new GremlinArgument[0]);
-
-            return builder.Add($"has({functions.Expand()})");
+            builder.AddArgument(key as GremlinArgument);
+            builder.AddArguments(traversal.GremlinArguments);
+            return builder.Add($"has({key.QueryStringValue},{traversal.Query})");
         }
-        
-        public static GremlinQueryBuilder Has(this GremlinQueryBuilder builder, params IGremlinParameter[] parameters)
+
+        /// <summary>
+        /// It is possible to filter vertices, edges, and vertex properties based on their properties using has()-step (filter)
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="key"></param>
+        /// <param name="value">Optional value to check for. If not supplied, checks for any value for the property referenced by <see cref="key"/></param>
+        /// <returns></returns>
+        public static GremlinQueryBuilder Has(this GremlinQueryBuilder builder, IGremlinParameter key, IGremlinParameter value = null)
         {
-            if (parameters == null || !parameters.Any())
-                return builder;
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+            if (!(key.TrueValue is string))
+                throw new GremlinQueryBuilderException($"{nameof(key)} must always resolve to a string for property key and {key.TrueValue} does not");
+
+            builder.AddArgument(key as GremlinArgument);
+
+            if (value == null)
+            {
+                return builder.Add($"has({key.QueryStringValue})");
+            }
+            else
+            {
+                builder.AddArgument(value as GremlinArgument);
+                return builder.Add($"has({key.QueryStringValue},{value.QueryStringValue})");
+            }
+        }
+
+        /// <summary>
+        /// It is possible to filter vertices, edges, and vertex properties based on their properties using has()-step (filter)
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="label"></param>
+        /// <param name="key"></param>
+        /// <param name="value">Optional value to check for. If not supplied, checks for any value for the property referenced by <see cref="key"/></param>
+        /// <returns></returns>
+        public static GremlinQueryBuilder Has(this GremlinQueryBuilder builder, IGremlinParameter label, IGremlinParameter key, IGremlinParameter value)
+        {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+            if (!(key.TrueValue is string))
+                throw new GremlinQueryBuilderException($"{nameof(key)} must always resolve to a string for property key and {key.TrueValue} does not");
+            if (label == null)
+                throw new ArgumentNullException(nameof(key));
+            if (!(label.TrueValue is string))
+                throw new GremlinQueryBuilderException($"{nameof(label)} must always resolve to a string for property key and {label.TrueValue} does not");
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
             
-            builder.AddArguments(parameters.OfType<GremlinArgument>().ToArray());
-            return builder.Add($"has({parameters.Expand()})");
+            builder.AddArgument(key as GremlinArgument);
+            builder.AddArgument(value as GremlinArgument);
+            builder.AddArgument(label as GremlinArgument);
+
+            return builder.Add($"has({label.QueryStringValue},{key.QueryStringValue},{value.QueryStringValue})");
         }
     }
 }
