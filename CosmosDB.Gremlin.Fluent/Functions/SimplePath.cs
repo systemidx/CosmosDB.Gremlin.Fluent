@@ -1,6 +1,8 @@
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class SimplePathFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// When it is important that a traverser not repeat its path through the graph,

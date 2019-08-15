@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class BothEFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Traverse to both the incoming and outgoing incident edges given the edge labels

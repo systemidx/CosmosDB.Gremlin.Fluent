@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class ChooseFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The choose()-step (branch) routes the current traverser to a particular traversal branch option.

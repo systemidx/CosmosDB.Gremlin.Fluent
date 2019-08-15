@@ -3,7 +3,9 @@ using CosmosDB.Gremlin.Fluent;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class OutFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Move to the outgoing adjacent vertices given the edge labels

@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class CoalesceFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The coalesce()-step evaluates the provided traversals in order and returns the first

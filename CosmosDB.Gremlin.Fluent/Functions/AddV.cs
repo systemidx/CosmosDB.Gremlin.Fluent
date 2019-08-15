@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class AddVFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The addV()-step is used to add vertices to the graph (map/sideEffect). For every incoming object, a vertex is created

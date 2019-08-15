@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class StoreFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Lazily aggregates objects in the stream into a side-effect collection

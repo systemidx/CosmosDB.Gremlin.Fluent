@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class NeqFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Predicate testing that the incoming object is not equal to the provided object

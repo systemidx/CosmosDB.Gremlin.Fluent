@@ -3,7 +3,9 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class AsFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The as()-step is not a real step, but a "step modulator" similar to by().

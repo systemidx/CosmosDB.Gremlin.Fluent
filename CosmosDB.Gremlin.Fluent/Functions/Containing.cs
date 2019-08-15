@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class ContainingFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Predicate testing that the incoming string contains the provided string argument value

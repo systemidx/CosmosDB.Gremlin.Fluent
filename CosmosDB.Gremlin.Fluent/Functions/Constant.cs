@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class ConstantFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// To specify a constant value for a traverser, use the constant()-step (map).

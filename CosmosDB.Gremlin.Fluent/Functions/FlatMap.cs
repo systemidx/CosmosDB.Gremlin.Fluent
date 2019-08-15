@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class FlatMapFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Map the traverser to an iterator of objects that are streamed to the next step

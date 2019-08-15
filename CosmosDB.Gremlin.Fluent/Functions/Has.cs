@@ -3,7 +3,9 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class HasFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// It is possible to filter vertices, edges, and vertex properties based on their properties using has()-step (filter)
@@ -32,7 +34,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
         /// </summary>
         /// <param name="builder"></param>
         /// <param name="key"></param>
-        /// <param name="value">Optional value to check for. If not supplied, checks for any value for the property referenced by <see cref="key"/></param>
+        /// <param name="value">Optional value to check for. If not supplied, checks for any value for the property referenced by <paramref name="key"/>/></param>
         /// <returns></returns>
         public static GremlinQueryBuilder Has(this GremlinQueryBuilder builder, IGremlinParameter key, IGremlinParameter value = null)
         {
@@ -60,7 +62,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
         /// <param name="builder"></param>
         /// <param name="label"></param>
         /// <param name="key"></param>
-        /// <param name="value">Optional value to check for. If not supplied, checks for any value for the property referenced by <see cref="key"/></param>
+        /// <param name="value">Optional value to check for. If not supplied, checks for any value for the property referenced by <paramref name="key"/></param>
         /// <returns></returns>
         public static GremlinQueryBuilder Has(this GremlinQueryBuilder builder, IGremlinParameter label, IGremlinParameter key, IGremlinParameter value)
         {

@@ -1,6 +1,8 @@
 ﻿namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class FoldFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// There are situations when the traversal stream needs a "barrier" to aggregate all the objects and emit a

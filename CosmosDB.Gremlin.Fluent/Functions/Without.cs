@@ -2,7 +2,9 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class WithoutFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Predicate testing if the incoming object is within array of provided objects

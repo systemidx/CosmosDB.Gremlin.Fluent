@@ -1,6 +1,8 @@
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class EmitFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The emit-step is not an actual step, but is instead a step modulator for repeat().

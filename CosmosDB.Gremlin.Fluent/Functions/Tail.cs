@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class TailFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The tail()-step is analogous to limit()-step, except that it emits the last n-objects

@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class ValueMapFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The valueMap()-step yields a Map representation of the properties of an element.

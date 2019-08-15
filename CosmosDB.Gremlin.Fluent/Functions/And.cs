@@ -4,7 +4,9 @@ using System.Text;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class AndFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The and()-step ensures that all provided traversals yield a result

@@ -3,7 +3,9 @@ using CosmosDB.Gremlin.Fluent;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class CapFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The cap()-step (barrier) iterates the traversal up to itself and emits the sideEffect

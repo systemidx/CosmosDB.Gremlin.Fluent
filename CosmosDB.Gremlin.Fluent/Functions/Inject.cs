@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class InjectFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Insert object arbitrarily into a traversal stream

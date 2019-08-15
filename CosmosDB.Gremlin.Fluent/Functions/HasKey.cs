@@ -3,7 +3,9 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class HasKeyFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Remove the traverser if its properties do not have all of the provided keys

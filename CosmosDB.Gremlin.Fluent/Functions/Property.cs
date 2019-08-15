@@ -3,7 +3,9 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class PropertyFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The property()-step is used to add properties to the elements of the graph (sideEffect).

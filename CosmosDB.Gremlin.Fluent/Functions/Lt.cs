@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class LtFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Predicate testing if the incoming number is less than the argument numeric value

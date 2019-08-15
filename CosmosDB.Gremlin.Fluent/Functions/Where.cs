@@ -3,7 +3,9 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class WhereFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The where()-step filters the current object based on either the object itself (Scope.local)

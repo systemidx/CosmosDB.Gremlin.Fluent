@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class MapFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Map the traverser to an objects for the next step to process

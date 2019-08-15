@@ -1,6 +1,8 @@
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class ValueFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The value()-step (map) takes a Property and extracts the value from it

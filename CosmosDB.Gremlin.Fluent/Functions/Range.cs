@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class RangeFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// As traversers propagate through the traversal, it is possible to only allow a certain number of them

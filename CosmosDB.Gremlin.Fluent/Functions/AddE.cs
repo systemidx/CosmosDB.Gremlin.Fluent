@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class AddEFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Create a new graph edge with the specified label

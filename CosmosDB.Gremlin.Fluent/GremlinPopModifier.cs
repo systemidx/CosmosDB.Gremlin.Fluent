@@ -1,8 +1,17 @@
+using CosmosDB.Gremlin.Fluent.Functions;
+
 namespace CosmosDB.Gremlin.Fluent
 {
+    /// <summary>
+    /// Apache Pop modifier. Used by <seealso cref="SelectFunction.Select(CosmosDB.Gremlin.Fluent.GremlinQueryBuilder,CosmosDB.Gremlin.Fluent.IGremlinParameter[])"/>
+    /// </summary>
     public class GremlinPopModifier
     {
+        /// <summary>
+        /// String representation for the purposes of building the query string
+        /// </summary>
         public string QueryStringValue { get; }
+        
         private GremlinPopModifier(string value)
         {
             QueryStringValue = value;

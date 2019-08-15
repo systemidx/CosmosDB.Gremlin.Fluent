@@ -1,6 +1,8 @@
 ﻿namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class CyclicPathFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Each traverser maintains its history through the traversal over the graph — i.e. its path.

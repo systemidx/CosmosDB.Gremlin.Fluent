@@ -3,17 +3,33 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent
 {
+    /// <summary>
+    /// Main class for building gremlin queries.
+    /// Represents a single query of a single traversal/predicate parameter for another query builder
+    /// </summary>
     public class GremlinQueryBuilder
     {
+        /// <summary>
+        /// Resultant text query string
+        /// </summary>
         public string Query { get; private set; } = "";
 
+        /// <summary>
+        /// Query arguments as consumed by Gremlin.NET client
+        /// </summary>
         public Dictionary<string, object> Arguments
         {
             get { return GremlinArguments.ToDictionary(arg => arg.ArgumentName, arg => arg.ArgumentValue); }
         }
 
+        /// <summary>
+        /// All gremlin arguments currently carried by this builder
+        /// </summary>
         protected internal List<GremlinArgument> GremlinArguments { get; set; } = new List<GremlinArgument>();
 
+        /// <summary>
+        /// Start a new blank builder
+        /// </summary>
         public GremlinQueryBuilder()
         {
             
@@ -30,6 +46,11 @@ namespace CosmosDB.Gremlin.Fluent
             Add(parameter.QueryStringValue);
         }
 
+        /// <summary>
+        /// Add argument to this builder. Handles duplicates.
+        /// </summary>
+        /// <param name="argument"></param>
+        /// <exception cref="GremlinQueryBuilderException"></exception>
         protected internal void AddArgument(GremlinArgument argument)
         {
             // we accept null arguments to minimise boilerplate
@@ -49,6 +70,10 @@ namespace CosmosDB.Gremlin.Fluent
             }
         }
 
+        /// <summary>
+        /// Add multiple arguments to the builder. Handles deduplication natively.
+        /// </summary>
+        /// <param name="arguments"></param>
         protected internal void AddArguments(IReadOnlyCollection<GremlinArgument> arguments)
         {
             foreach (var gremlinArgument in arguments)
@@ -57,6 +82,11 @@ namespace CosmosDB.Gremlin.Fluent
             }
         }
 
+        /// <summary>
+        /// Append raw text string to the end of the current builder, separating each addition with a period.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public GremlinQueryBuilder Add(string value)
         {
             if (Query.Length > 0)

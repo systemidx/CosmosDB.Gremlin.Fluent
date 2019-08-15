@@ -2,11 +2,13 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class ProjectFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The project()-step (map) projects the current object into a Map&lt;String,Object&gt; keyed by provided labels.
-        /// It is similar to <seealso cref="SelectFunction.Select"/>, save that instead of retrieving and modulating historic traverser state,
+        /// It is similar to <seealso cref="SelectFunction.Select(CosmosDB.Gremlin.Fluent.GremlinQueryBuilder,CosmosDB.Gremlin.Fluent.IGremlinParameter[])"/>, save that instead of retrieving and modulating historic traverser state,
         /// it modulates the current state of the traverser
         /// </summary>
         /// <param name="builder"></param>
@@ -26,7 +28,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
         
         /// <summary>
         /// The project()-step (map) projects the current object into a Map&lt;String,Object&gt; keyed by provided labels.
-        /// It is similar to <seealso cref="SelectFunction.Select"/>, save that instead of retrieving and modulating historic traverser state,
+        /// It is similar to <seealso cref="SelectFunction.Select(CosmosDB.Gremlin.Fluent.GremlinQueryBuilder,CosmosDB.Gremlin.Fluent.IGremlinParameter[])"/>, save that instead of retrieving and modulating historic traverser state,
         /// it modulates the current state of the traverser
         /// </summary>
         /// <param name="builder"></param>

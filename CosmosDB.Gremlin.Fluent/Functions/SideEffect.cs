@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class SideEffectFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Perform some operation on the traverser and pass it to the next step unmodified

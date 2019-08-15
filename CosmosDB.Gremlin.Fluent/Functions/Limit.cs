@@ -2,7 +2,9 @@ using System;
    
    namespace CosmosDB.Gremlin.Fluent.Functions
    {
+#pragma warning disable 1591
        public static class LimitFunction
+#pragma warning restore 1591
        {
            /// <summary>
            /// The limit()-step is analogous to <seealso cref="RangeFunction.Range(CosmosDB.Gremlin.Fluent.GremlinQueryBuilder,CosmosDB.Gremlin.Fluent.IGremlinParameter,CosmosDB.Gremlin.Fluent.IGremlinParameter)"/> save that the lower end range is set to 0.
@@ -25,12 +27,13 @@ using System;
                builder.AddArgument(parameter as GremlinArgument);
                return builder.Add($"limit({parameter.QueryStringValue})");
            }
-           
+
            /// <summary>
            /// The limit()-step is analogous to <seealso cref="RangeFunction.Range(CosmosDB.Gremlin.Fluent.GremlinQueryBuilder,CosmosDB.Gremlin.Fluent.IGremlinParameter,CosmosDB.Gremlin.Fluent.IGremlinParameter)"/> save that the lower end range is set to 0.
            /// It can also be applied with local scope, in which case it operates on the incoming collection
            /// </summary>
            /// <param name="builder"></param>
+           /// <param name="scope"></param>
            /// <param name="parameter"></param>
            /// <returns></returns>
            /// <exception cref="ArgumentNullException"></exception>
@@ -53,6 +56,7 @@ using System;
            /// It can also be applied with local scope, in which case it operates on the incoming collection
            /// </summary>
            /// <param name="builder"></param>
+           /// <param name="scope"></param>
            /// <param name="parameter"></param>
            /// <returns></returns>
            /// <exception cref="ArgumentNullException"></exception>

@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class IsFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Filter scalar values if they are not equal to the provided value

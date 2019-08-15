@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class UntilFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The until-step is not an actual step, but is instead a step modulator for repeat().

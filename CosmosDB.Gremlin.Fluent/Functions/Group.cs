@@ -2,7 +2,9 @@ using CosmosDB.Gremlin.Fluent;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class GroupFunction
+#pragma warning restore 1591
     { 
         /// <summary>
         /// As traversers propagate across a graph as defined by a traversal, sideEffect computations are sometimes required.

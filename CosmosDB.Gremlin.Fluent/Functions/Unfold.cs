@@ -1,6 +1,8 @@
 ﻿namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class UnfoldFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// If the object reaching unfold() (flatMap) is an iterator, iterable, or map,

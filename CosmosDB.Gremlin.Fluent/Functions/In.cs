@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class InFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Move to the incoming adjacent vertices given the edge labels

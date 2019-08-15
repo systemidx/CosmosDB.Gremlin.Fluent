@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class OptionFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// An option for the choose() function (since CosmosDB doesn't support branch())

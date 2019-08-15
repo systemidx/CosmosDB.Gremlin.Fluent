@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class SampleFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The sample()-step is useful for sampling some number of traversers previous in the traversal

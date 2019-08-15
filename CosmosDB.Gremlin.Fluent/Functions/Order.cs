@@ -1,6 +1,8 @@
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class OrderFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The order()-step allows the user to provide an arbitrary number of comparators for primary, secondary, etc. sorting.

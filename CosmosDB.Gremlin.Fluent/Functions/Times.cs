@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class TimesFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Limit iteration to specified number of times

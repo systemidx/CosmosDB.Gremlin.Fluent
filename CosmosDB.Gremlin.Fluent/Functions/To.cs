@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class ToFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The to()-step is not an actual step, but instead is a "step-modulator" similar to as() and by().

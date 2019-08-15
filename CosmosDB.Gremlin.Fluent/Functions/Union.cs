@@ -4,7 +4,9 @@ using System.Text;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class UnionFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The union()-step (branch) supports the merging of the results of an arbitrary number of traversals.

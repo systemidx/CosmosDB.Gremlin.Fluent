@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class GFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// Create a new graph traversal source

@@ -4,7 +4,9 @@ using System.Text;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class OrFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The or()-step ensures that at least one of the provided traversals yield a result (filter).

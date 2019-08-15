@@ -2,7 +2,9 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class PropertiesFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The properties()-step (map) extracts properties from an Element in the traversal stream

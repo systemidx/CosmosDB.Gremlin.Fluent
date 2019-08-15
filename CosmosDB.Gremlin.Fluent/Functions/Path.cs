@@ -1,6 +1,8 @@
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class PathFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// A traverser is transformed as it moves through a series of steps within a traversal.

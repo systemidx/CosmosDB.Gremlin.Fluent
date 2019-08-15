@@ -2,12 +2,14 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class FromFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The from()-step is not an actual step, but instead is a "step-modulator" similar to as() and by().
         /// If a step is able to accept traversals or strings then from() is the means by which they are added.
-        /// The general pattern is step().from(). See <seealso cref="ToFunction.To"/>.
+        /// The general pattern is step().from(). See <seealso cref="ToFunction.To(CosmosDB.Gremlin.Fluent.GremlinQueryBuilder,CosmosDB.Gremlin.Fluent.IGremlinParameter)"/>.
         /// The list of steps that support from()-modulation are: simplePath(), cyclicPath(), path(), and addE()
         /// </summary>
         /// <param name="builder"></param>
@@ -29,7 +31,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
         /// <summary>
         /// The from()-step is not an actual step, but instead is a "step-modulator" similar to as() and by().
         /// If a step is able to accept traversals or strings then from() is the means by which they are added.
-        /// The general pattern is step().from(). See <seealso cref="ToFunction.To"/>.
+        /// The general pattern is step().from(). See <seealso cref="ToFunction.To(CosmosDB.Gremlin.Fluent.GremlinQueryBuilder,CosmosDB.Gremlin.Fluent.IGremlinParameter)"/>.
         /// The list of steps that support from()-modulation are: simplePath(), cyclicPath(), path(), and addE()
         /// </summary>
         /// <param name="builder"></param>
@@ -45,7 +47,7 @@ namespace CosmosDB.Gremlin.Fluent.Functions
         /// <summary>
         /// The from()-step is not an actual step, but instead is a "step-modulator" similar to as() and by().
         /// If a step is able to accept traversals or strings then from() is the means by which they are added.
-        /// The general pattern is step().from(). See <seealso cref="ToFunction.To"/>.
+        /// The general pattern is step().from(). See <seealso cref="ToFunction.To(CosmosDB.Gremlin.Fluent.GremlinQueryBuilder,CosmosDB.Gremlin.Fluent.IGremlinParameter)"/>.
         /// The list of steps that support from()-modulation are: simplePath(), cyclicPath(), path(), and addE()
         /// </summary>
         /// <param name="builder"></param>

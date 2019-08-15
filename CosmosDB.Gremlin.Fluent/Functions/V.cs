@@ -3,7 +3,9 @@ using CosmosDB.Gremlin.Fluent;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class VFunction
+#pragma warning restore 1591
     { 
         /// <summary>
         /// Inject vertices into traversal. Can filter by specified vertex ids.

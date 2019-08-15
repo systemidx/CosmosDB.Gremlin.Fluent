@@ -3,7 +3,9 @@ using System.Linq;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class SelectFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// There are two general ways to use select()-step.

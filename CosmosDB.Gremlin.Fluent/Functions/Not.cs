@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class NotFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The not()-step (filter) removes objects from the traversal stream when the traversal

@@ -1,6 +1,8 @@
 ﻿namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class BarrierFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The barrier()-step (barrier) turns the lazy traversal pipeline into a bulk-synchronous pipeline. This step is useful in the following situations:

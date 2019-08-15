@@ -2,7 +2,9 @@ using CosmosDB.Gremlin.Fluent;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class TreeFunction
+#pragma warning restore 1591
     { 
         /// <summary>
         /// From any one element (i.e. vertex or edge), the emanating paths from that element can be aggregated

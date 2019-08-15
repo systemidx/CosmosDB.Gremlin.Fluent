@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class NotEndingWithFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// String predicate that tests incoming string to see if it does not end with specified argument string value

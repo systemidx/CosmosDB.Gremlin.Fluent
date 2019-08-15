@@ -2,7 +2,9 @@ using System;
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class OptionalFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// The optional()-step (branch/flatMap) returns the result of the specified traversal

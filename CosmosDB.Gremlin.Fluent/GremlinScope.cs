@@ -1,9 +1,15 @@
 namespace CosmosDB.Gremlin.Fluent
 {
+    /// <summary>
+    /// Representation of TinkerPop Scope.
+    /// </summary>
     public class GremlinScope
     {
+        /// <summary>
+        /// String representation for the purposes of building the query string
+        /// </summary>
         public string QueryStringValue { get; }
-
+        
         private GremlinScope(string scopeName)
         {
             QueryStringValue = scopeName;

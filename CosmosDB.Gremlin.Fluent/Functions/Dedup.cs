@@ -2,7 +2,9 @@
 
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class DedupFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// With dedup()-step (filter), repeatedly seen objects are removed from the traversal stream. N

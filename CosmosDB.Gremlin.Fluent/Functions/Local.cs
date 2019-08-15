@@ -1,6 +1,8 @@
 namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class LocalFunction
+#pragma warning restore 1591
     {
         /// <summary>
         /// A GraphTraversal operates on a continuous stream of objects. In many situations, it is important to
