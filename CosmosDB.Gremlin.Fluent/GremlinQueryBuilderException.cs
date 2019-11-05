@@ -2,5 +2,12 @@
 
 namespace CosmosDB.Gremlin.Fluent
 {
-    public class GremlinQueryBuilderException: Exception { }
+    /// <summary>
+    /// Exception when building query
+    /// </summary>
+    public class GremlinQueryBuilderException: Exception 
+    {
+        /// <inheritdoc />
+        public GremlinQueryBuilderException(string message) : base(message) { }
+    }
 }

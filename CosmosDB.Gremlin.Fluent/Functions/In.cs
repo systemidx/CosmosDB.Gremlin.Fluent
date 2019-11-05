@@ -1,10 +1,32 @@
-﻿namespace CosmosDB.Gremlin.Fluent.Functions
+﻿using System.Linq;
+
+namespace CosmosDB.Gremlin.Fluent.Functions
 {
+#pragma warning disable 1591
     public static class InFunction
+#pragma warning restore 1591
     {
-        public static GremlinQueryBuilder In(this GremlinQueryBuilder builder, params GremlinParameter[] parameters)
+        /// <summary>
+        /// Move to the incoming adjacent vertices given the edge labels
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="edgeLabels"></param>
+        /// <returns></returns>
+        public static GremlinQueryBuilder In(this GremlinQueryBuilder builder, params IGremlinParameter[] edgeLabels)
         {
-            return builder.Add($"in({parameters.Expand()})");
+            if (edgeLabels == null || !edgeLabels.Any())
+            {
+                return builder.Add("in()");
+            }
+            else
+            {
+                if (!edgeLabels.All(l => l.TrueValue is string))
+                    throw new GremlinQueryBuilderException(
+                        $"{nameof(In)} only supports {nameof(edgeLabels)} that resolve to strings");
+                
+                builder.AddArguments(edgeLabels.OfType<GremlinArgument>().ToArray());
+                return builder.Add($"in({edgeLabels.Expand()})");
+            }
         }
     }
 }
